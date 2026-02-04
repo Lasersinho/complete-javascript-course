@@ -62,4 +62,109 @@ describeCountry("Peru", 34, "Lima")
 describeCountry("Chile", 11, "Santiago De Chile")
 describeCountry("Argentina", 54, "Buenos Aires")
 
+
+
+
+// Declaración: Tiene nombre 'calcAge1'
+function calcAge1(birthYear) {
+    return 2037 - birthYear;
+}
+
+// Invocación
+const age1 = calcAge1(1991);
+console.log(age1); // 46
+
+
+// Expresión: Función anónima guardada en la variable 'calcAge2'
+const calcAge2 = function (birthYear) {
+    return 2037 - birthYear;
+};
+
+// Invocación (usamos el nombre de la variable)
+const age2 = calcAge2(1991);
+console.log(age2); // 46
+
+
+// FUNCIONA
+const age3 = calcAge3(1991);
+
+function calcAge3(birthYear) {
+    return 2037 - birthYear;
+}
+console.log(age3);
+
+//Assignment func vs decl
+
+function percentageOfWorld1(population) {
+    return 100 * population / 7900;
+}
+
+const peru = percentageOfWorld1(33)
+const uruguay = percentageOfWorld1(3)
+const china = percentageOfWorld1(1441)
+
+console.log(peru)
+console.log(uruguay)
+console.log(china)
+
+
+
+// Antes (Function Expression)
+const calcAge2 = function (birthYear) {
+    return 2037 - birthYear;
+};
+
+// AHORA (Arrow Function)
+const calcAge3 = birthYear => 2037 - birthYear;
+
+// La flecha "apunta" a lo que queremos devolver
+// const calcAge3 = birthYear => 2037 - birthYear;
+
+// Paréntesis obligatorios (birthYear, firstName)
+const yearsUntilRetirement = (birthYear, firstName) => {
+    const age = 2037 - birthYear;
+    const retirement = 65 - age;
+    return `${firstName} retires in ${retirement} years`;
+}
+
+console.log(yearsUntilRetirement(1991, 'Jonas'));
+
+
+
+// 1. La función auxiliar (La máquina de cortar)
+function cutFruitPieces(fruit) {
+    return fruit * 4;
+}
+
+// 2. La función principal (El procesador)
+function fruitProcessor(apples, oranges) {
+
+    // Aquí LLAMAMOS a la otra función
+    const applePieces = cutFruitPieces(apples);
+    const orangePieces = cutFruitPieces(oranges);
+
+    const juice = `Juice with ${applePieces} pieces of apple and ${orangePieces} pieces of orange.`;
+    return juice;
+}
+
+// 3. Ejecución
+console.log(fruitProcessor(2, 3));
+
+
+//Assignment function conections
+
+function percentageOfWorld1(population) {
+    return `${(100 * population / 7900).toFixed(2)}%`;
+}
+
+function describePopulation(country, population) {
+    return `${country} has ${population} million people, which is about ${percentageOfWorld1(population)} of the world`
+}
+
+console.log(describePopulation("Peru", 33));
+console.log(describePopulation("Mexico", 141));
+console.log(describePopulation("USA", 200));
+
+
 */
+
