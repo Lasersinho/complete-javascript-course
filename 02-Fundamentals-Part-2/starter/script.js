@@ -238,5 +238,243 @@ console.log(removedFriend); // 'Jay'
 // Quitar el primero ('John')
 friends.shift(); 
 
-*/
 
+
+const jonasArray = ['Jonas', 'Schmedtmann', 46, 'Teacher'];
+
+const jonas = {
+    firstName: 'Jonas',      // Key: Value
+    lastName: 'Schmedtmann',
+    age: 2037 - 1991,        // Podemos usar expresiones
+    job: 'Teacher',
+    friends: ['Michael', 'Peter', 'Steven'] // Un array dentro de un objeto
+};
+
+
+
+//Assignment Basic Array Operations
+
+const neighbours = [`Chile`, `Bolivia`, `Ecuador`, `Brasil`, `Colombia`]
+
+neighbours.push(`Utopia`)
+neighbours.pop(`Utopia`)
+
+if (neighbours.includes(`Germany`)) {
+    console.log(`It's an european country`)
+} else {
+    console.log('Probable not a central european country :D')
+}
+
+neighbours[neighbours.indexOf(`Chile`)] = `Republica de Chile`;
+console.log(neighbours)
+
+
+
+//Assignment Introduction to objects
+
+const myCountry = {
+    country: `Peru`,
+    capital: `Lima`,
+    language: `Spanish`,
+    population: 33,
+    neighbours: [`Chile`, `Bolivia`, `Ecuador`, `Brasil`, `Colombia`],
+
+}
+
+
+
+
+
+
+console.log(jonas.lastName); // 'Schmedtmann'
+console.log(jonas.age);      // 46
+
+
+console.log(jonas['lastName']); // 'Schmedtmann'
+
+// EJEMPLO DE EXPRESIÓN (COMPUTED PROPERTY NAME)
+const nameKey = 'Name';
+console.log(jonas['first' + nameKey]); // 'Jonas'
+console.log(jonas['last' + nameKey]);  // 'Schmedtmann'
+
+// const interestedIn = prompt('¿Qué quieres saber? (firstName, job, age...)');
+
+// ❌ Dot Notation FALLA
+console.log(jonas.interestedIn);
+// undefined (Busca literalmente una propiedad llamada "interestedIn")
+
+// ✅ Bracket Notation FUNCIONA
+console.log(jonas[interestedIn]);
+// Si el usuario escribe "job", JS evalúa jonas['job'] -> 'Teacher'
+
+
+if (jonas[interestedIn]) {
+    console.log(jonas[interestedIn]);
+} else {
+    console.log('Wrong request! 🚫');
+}
+
+// Usando Dot
+jonas.location = 'Portugal';
+
+// Usando Brackets
+jonas['twitter'] = '@jonasschmedtman';
+
+
+
+const jonas = {
+    firstName: 'Jonas',      // Key: Value
+    lastName: 'Schmedtmann',
+    age: 2037 - 1991,        // Podemos usar expresiones
+    job: 'Teacher',
+    friends: ['Michael', 'Peter', 'Steven'] // Un array dentro de un objeto
+};
+
+
+console.log(`${jonas.firstName} has ${jonas.friends.length} friends, and his best friend is called ${jonas.friends[0]}`);
+
+
+
+//Assignment Dot vs Bracket Notation
+
+const myCountry = {
+    country: `Peru`,
+    capital: `Lima`,
+    language: `Spanish`,
+    population: 33,
+    neighbours: [`Chile`, `Bolivia`, `Ecuador`, `Brasil`, `Colombia`],
+
+}
+
+console.log(`${myCountry.country} has ${myCountry.population} million ${myCountry.language}-speaking people, ${myCountry.neighbours.length} neighbouring countries and a capital called ${myCountry.capital}`)
+
+myCountry[`population`] = myCountry[`population`] - 2;
+
+console.log(myCountry.population)
+
+myCountry.population = myCountry.population + 2;
+console.log(myCountry.population)
+
+
+
+const jonas = {
+    firstName: 'Jonas',
+    birthYear: 1991,
+
+    // Esto es un MÉTODO (Function Expression)
+    calcAge: function () {
+        return 2037 - 1991;
+    }
+};
+
+
+
+console.log(jonas.calcAge()); // 46
+
+
+
+const jonas = {
+    birthYear: 1991,
+
+    calcAge: function() {
+        // 'this' es 'jonas'
+        console.log(this); 
+        return 2037 - this.birthYear; // Es igual a: jonas.birthYear
+    }
+};
+
+// Quien llama es 'jonas' (está a la izquierda del punto)
+jonas.calcAge(); 
+
+
+
+//Mi solucion:
+
+const jonas = {
+    firstName: 'Jonas',
+    birthYear: 1991,
+    calcAge: function () {
+        // Calculamos la edad y creamos una nueva propiedad 'age'
+        this.age = 2037 - this.birthYear;
+        return this.age;
+    },
+    driversLicense: true,
+
+    profesion: `teacher`,
+
+
+    getSummary: function () {
+
+        this.calcAge();
+        const lincenseStr = this.driversLicense ? `a` : `no`;
+
+        return `${this.firstName} is a ${this.age}-year old ${this.profesion}, and he has ${lincenseStr} driver's license`
+    }
+};
+
+console.log(jonas.getSummary())
+
+
+// 1. Llamamos al método una vez (calcula y guarda)
+jonas.calcAge();
+
+// 2. Ahora la propiedad .age EXISTE en el objeto
+console.log(jonas.age); // 46
+console.log(jonas.age); // 46 (Ya no necesita recalcular)
+
+
+//Solucion Jonas:
+
+const jonas = {
+    firstName: 'Jonas',
+    birthYear: 1991,
+    job: 'teacher',
+    hasDriversLicense: true,
+
+    calcAge: function() {
+        this.age = 2037 - this.birthYear;
+        return this.age;
+    },
+
+    getSummary: function() {
+        // Aseguramos que la edad esté calculada llamando al método aquí
+        // O usamos this.age si asumimos que ya se calculó.
+        
+        return `${this.firstName} is a ${this.calcAge()}-year old ${this.job}, and he has ${this.hasDriversLicense ? 'a' : 'no'} driver's license.`;
+    }
+};
+
+console.log(jonas.getSummary());
+
+
+
+//Asignment Object Methods
+
+const myCountry = {
+    country: `Peru`,
+    capital: `Lima`,
+    language: `spanish`,
+    population: 33,
+    neighbours: [`Chile`, `Bolivia`, `Ecuador`, `Brasil`, `Colombia`],
+
+
+
+    describe: function () {
+
+        return `${this.country} has ${this.population} million ${this.language}-speaking people, ${this.neighbours.length} neighbouring countries and a capital called ${this.capital}`
+
+
+    },
+
+    checkIsland: function () {
+
+        this.isIsland = this.neighbours.length === 0;
+        return this.isIsland;
+    },
+};
+
+console.log(myCountry.describe());
+console.log(myCountry.checkIsland());
+
+
+*/
