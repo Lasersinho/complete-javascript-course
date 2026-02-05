@@ -166,5 +166,77 @@ console.log(describePopulation("Mexico", 141));
 console.log(describePopulation("USA", 200));
 
 
+
+
+// ========== ARRAYS ==========
+
+// 1. Sintaxis Literal (Bracket Syntax) - ¡LA MÁS COMÚN! ✅
+const friends = ['Michael', 'Steven', 'Peter'];
+
+// 2. Sintaxis "New Array" (Menos común) ⚠️
+const years = new Array(1991, 1984, 2008, 2020);
+
+console.log(friends[0]); // 'Michael'
+console.log(friends[2]); // 'Peter'
+
+console.log(friends.length); // 3 (Hay 3 amigos)
+
+// Dentro de los corchetes podemos poner EXPRESIONES matemáticas
+console.log(friends[friends.length - 1]); // 'Peter'
+
+
+const friends = ['Michael', 'Steven', 'Peter'];
+
+// ✅ ESTO ES VÁLIDO (Mutar elementos individuales)
+friends[2] = 'Jay';
+// Resultado: ['Michael', 'Steven', 'Jay']
+
+// ❌ ESTO ES ILEGAL (Reasignar la variable entera)
+// friends = ['Bob', 'Alice'];
+// Error: Assignment to constant variable
+
+
+const firstName = 'Jonas';
+const jonas = [firstName, 'Schmedtmann', 2037 - 1991, friends];
+// Resultado: ['Jonas', 'Schmedtmann', 46, Array(3)]
+
+console.log(jonas);
+console.table(jonas);
+
+
+
+// Assignment array
+
+function percentageOfWorld1(population) {
+    return `${(100 * population / 7900).toFixed(2)}%`;
+}
+
+const population = [33, 11, 8, 14];
+console.log(population.length === 4);
+
+const percentages = [percentageOfWorld1(population[0]), percentageOfWorld1(population[1]), percentageOfWorld1(population[2]), percentageOfWorld1(population[3])];
+console.table(percentages);
+
+
+
+const friends = ['Michael', 'Steven', 'Peter'];
+
+// Agregar al final
+const newLength = friends.push('Jay');
+console.log(friends); // ['Michael', 'Steven', 'Peter', 'Jay']
+console.log(newLength); // 4
+
+// Agregar al inicio
+friends.unshift('John');
+// ['John', 'Michael', 'Steven', 'Peter', 'Jay']
+console.log(friends)
+
+// Quitar el último ('Jay')
+const removedFriend = friends.pop();
+console.log(removedFriend); // 'Jay'
+
+// Quitar el primero ('John')
+friends.shift(); 
+
 */
 
